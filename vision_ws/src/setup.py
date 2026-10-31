@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'image_processor = vision_tutorial.image_processor:main',
+            'image_subscriber = vision_tutorial.image_subscriber:main',
         ],
     },
 )
