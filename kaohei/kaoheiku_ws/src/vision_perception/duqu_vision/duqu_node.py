@@ -25,7 +25,7 @@ class VisionPerceptionNode(Node):                    # 视觉感知节点：读�
         self.image_pub = self.create_publisher(Image, '/perception/annotated_image', 10)
 
         # 视频源：用本地 mp4 代替实时摄像头，方便离线调试
-        self.video_path = 'hsv_heixin/kaohei/kaoheiku_ws/shopi.mp4'
+        self.video_path = '/home/jianmo/OpenCv/hsv_heixin/kaohei/kaoheiku_ws/shopi.mp4'
         self.cap = cv2.VideoCapture(self.video_path)        # 打开视频文件/摄像头
         if not self.cap.isOpened():                        # 打开失败（路径错误或编码不支持）
             self.get_logger().error(f'视频打开失败: {self.video_path}')
@@ -155,7 +155,8 @@ def main(args=None):
         pass                          # 忽略异常，交给 finally 统一清理
     finally:
         node.destroy_node()           # 释放视频、窗口与 ROS 资源
-        rclpy.shutdown()              # 关闭 ROS 2 上下文，与 init 成对
+        if rclpy.ok():                # Ctrl+C 时 rclpy 可能已自行关闭上下文，避免重复 shutdown 抛 RCLError
+            rclpy.shutdown()          # 关闭 ROS 2 上下文，与 init 成对
 
 
 if __name__ == '__main__':     # 仅当直接运行本文件时生效（被 import 时不启动）

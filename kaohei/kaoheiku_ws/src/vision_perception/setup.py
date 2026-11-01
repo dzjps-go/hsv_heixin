@@ -24,7 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'duqu_vision_node = vision_perception.duqu_vision.duqu_node:main',
+            'duqu_vision_node = duqu_vision.duqu_node:main',
             
         ],
     },
