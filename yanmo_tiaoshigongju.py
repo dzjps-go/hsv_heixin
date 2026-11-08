@@ -27,7 +27,7 @@ while True:                                   # 主循环：每轮处理一帧�
     s_min = cv2.getTrackbarPos('S_min', 'trackbar')   # 读取 S_min 滑块当前值
     s_max = cv2.getTrackbarPos('S_max', 'trackbar')   # 读取 S_max 滑块当前值
     v_min = cv2.getTrackbarPos('V_min', 'trackbar')   # 读取 V_min 滑块当前值
-    v_max = cv2.getTrackbarPos('V_max', 'trackbar')   # 读取 V_max 滑块当前值
+    v_max = cv2.getTrackbarPos('V_max', 'trackbar')   # 读取 V_max 滑块当前值   
 
     lower = np.array([h_min, s_min, v_min])   # 阈值下界数组 [H,S,V]
     upper = np.array([h_max, s_max, v_max])   # 阈值上界数组 [H,S,V]
